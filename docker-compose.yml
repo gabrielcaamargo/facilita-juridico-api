@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  facilita-api:
+    image: postgres
+    environment:
+      - POSTGRES_USER=facilitaroot
+      - POSTGRES_PASSWORD=facilitaroot
+    ports:
+      - "5432:5432"
