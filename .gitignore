@@ -1,0 +1,8 @@
+# Build
+dist
+
+# Environment
+.env
+
+# Javascript NPM packages
+node_modules
