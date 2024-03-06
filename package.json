@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "node --watch src/index.ts",
+    "start:build": "node dist",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "express": "^4.18.3"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
