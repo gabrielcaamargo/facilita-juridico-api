@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { userController } from './controllers/UserController';
+import { customerController } from './controllers/CustomerController';
 
 
 export const router = Router();
 
-router.get('/api/v1/users', userController.findAll);
+router.get('/api/v1/users', customerController.findAll);

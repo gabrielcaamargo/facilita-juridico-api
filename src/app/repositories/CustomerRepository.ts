@@ -1,6 +1,6 @@
 import { query } from '../../database';
 
-class UserRepository {
+class CustomerRepository {
   async findAll(order: string) {
     const orderParam = order.toLowerCase() === 'asc' ? 'ASC' :  'DESC';
 
@@ -14,5 +14,5 @@ class UserRepository {
   }
 }
 
-const userRepository = new UserRepository();
-export { userRepository };
+const customerRepository = new CustomerRepository();
+export { customerRepository };
