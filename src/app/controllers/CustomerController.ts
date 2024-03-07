@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import { customerRepository } from '../repositories/CustomerRepository';
+import { Identifier } from '../types/customers/Identifier';
 
 class CustomerController {
   async create(request: Request, response: Response) {
@@ -23,9 +24,9 @@ class CustomerController {
   }
 
   async findAll(request: Request, response: Response) {
-    const { order } = request.query;
+    const { order, orderBy, search } = request.query;
 
-    const users = await customerRepository.findAll(order as string ?? 'asc');
+    const users = await customerRepository.findAll(order as string ?? 'asc', orderBy as Identifier, search as string);
 
     return response.json(users);
   }

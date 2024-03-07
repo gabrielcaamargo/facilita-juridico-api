@@ -1,5 +1,6 @@
 import { query } from '../../database';
 import { ICreateCustomerDto } from '../dtos/customers/CreateCustomerDto';
+import { Identifier } from '../types/customers/Identifier';
 
 class CustomerRepository {
   async create(data: ICreateCustomerDto) {
@@ -11,7 +12,7 @@ class CustomerRepository {
       WHERE email = $1
     `, [email]);
 
-    if(customerExists) {
+    if(customerExists.length >= 1) {
       throw new Error('This email has already been taken');
     }
 
@@ -24,14 +25,29 @@ class CustomerRepository {
     return newCustomer;
   }
 
-  async findAll(order: string) {
+  async findAll(order: string, orderBy: Identifier, search?: string) {
     const orderParam = order.toLowerCase() === 'asc' ? 'ASC' :  'DESC';
+    const orderByParam = orderBy ?? 'created_at';
 
-    const rows = await query(`
+    let pgQuery = `
       SELECT *
       FROM customers
-      ORDER BY created_at ${orderParam}
-    `);
+      ORDER BY $1 ${orderParam};
+    `;
+
+    if(search) {
+      pgQuery = `
+        SELECT *
+        FROM customers
+        WHERE
+        name ILIKE '%' || $1 || '%'
+        OR email ILIKE '%' || $1 || '%'
+        OR phone_number ILIKE '%' || $1 || '%'
+        ORDER BY $2 ${orderParam};
+      `;
+    }
+
+    const rows = await query(pgQuery, search ? [search, orderByParam] : [orderByParam]);
 
     return rows;
   }
