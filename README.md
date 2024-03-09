@@ -1,6 +1,6 @@
 # facilita-juridico-api
 
-Teste para a vaga de desenvolvedor full stack na empresa Facilita Jurídico.
+Teste para a vaga de desenvolvedor full stack na empresa Facilita Jurídico (backend).
 
 ### Estrutura
 
