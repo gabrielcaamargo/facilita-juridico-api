@@ -2,6 +2,8 @@
 
 Teste para a vaga de desenvolvedor full stack na empresa Facilita Jurídico (backend).
 
+Este projeto roda juntamente ao [Frontend](https://github.com/gabrielcaamargo/facilita-juridico-web)
+
 ### Estrutura
 
 O projeto está organizado da seguinte maneira: 
